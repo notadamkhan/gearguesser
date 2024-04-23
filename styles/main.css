@@ -1,0 +1,410 @@
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    Helvetica,
+    sans-serif;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.heading #profile-icon {
+  position: absolute;
+  right: 20px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.main-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 650px;
+  margin: 0 auto;
+  /* Centers the card horizontally */
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  /* card stretches to its max-width */
+}
+
+.row {
+  width: calc(100% - 40px);
+  /* Adjusts row width based on parent padding */
+  display: flex;
+  margin-bottom: 10px;
+  /* Spacing between rows */
+  align-items: center;
+}
+
+.row-1 {
+  justify-content: flex-start;
+  /* Aligns items to the left */
+}
+
+.row-1>* {
+  cursor: pointer;
+}
+
+.row-2,
+.row-3 {
+  justify-content: center;
+  /* Center alignment for these rows, if needed */
+}
+
+.row-2 img {
+  width: 100%;
+  /*image fills the row */
+  height: auto;
+  /* Maintains aspect ratio */
+}
+
+.input-make,
+.input-model {
+  /* width: calc(50% - 20px); */
+  /* Adjusts input width for side-by-side layout */
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-make:focus,
+.input-model:focus {
+  outline-color: #000;
+}
+
+#submit-button {
+  height: 37px;
+  /* match the height of text fields */
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submit-button:hover {
+  background-color: #e8e8e8;
+}
+
+#update-name-button {
+  height: 37px;
+  /* match the height of text fields */
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#update-name-button:hover {
+  background-color: #e8e8e8;
+}
+
+#update-name-input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#popup-card {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  /* Move the left edge of the popup to the center of the page */
+  transform: translateX(-50%);
+  /* Move the popup back by half its width */
+  display: flex;
+  flex-direction: column;
+  max-width: 750px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  background-color: #fff;
+  z-index: 1000;
+  box-sizing: border-box;
+  /* Includes padding and border in the width and height */
+}
+
+
+
+#game-over-card {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  /* Move the left edge of the popup to the center of the page */
+  transform: translateX(-50%);
+  /* Move the popup back by half its width */
+  display: flex;
+  flex-direction: column;
+  max-width: 750px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  background-color: #fff;
+  z-index: 1000;
+  box-sizing: border-box;
+  /* Includes padding and border in the width and height */
+}
+
+#profile-card {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  /* Move the left edge of the popup to the center of the page */
+  transform: translateX(-50%);
+  /* Move the popup back by half its width */
+  display: flex;
+  flex-direction: column;
+  max-width: 750px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  background-color: #fff;
+  z-index: 1000;
+  box-sizing: border-box;
+  /* Includes padding and border in the width and height */
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent black */
+  z-index: 999;
+  /* Below the popup card */
+}
+
+#popup-close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#profile-close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#submit-close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: auto;
+}
+
+.popup-card-grid-item {
+  padding: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 6px;
+  background: #f7f7f7;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.hidden-radio {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.popup-card-grid-item:hover {
+  background-color: #f0f0f0;
+}
+
+.popup-card-grid-item>* {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 0;
+}
+
+.popup-card-grid-item.selected {
+  background-color: #f0f0f0;
+  border: 2px solid #000;
+}
+
+#reset-session-button {
+  display: flex;
+  height: 49px;
+  padding: 0 15px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #df0303;
+  border-radius: 4px;
+  background-color: rgb(233, 34, 34);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+#reset-session-button:hover {
+  background-color: rgb(196, 31, 31);
+}
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.stats-item {
+  text-align: center;
+}
+
+.stats-item h4,
+.stats-item p {
+  display: block;
+}
+
+.popup-card-grid-item h4 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+#start-game-button {
+  display: flex;
+  width: 100%;
+  /* Makes the button full width */
+  height: 49px;
+  padding: 0 15px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #3f3f3f;
+  border-radius: 4px;
+  background-color: rgb(34, 34, 34);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+#start-game-button:hover {
+  background-color: rgb(18, 18, 18);
+}
+
+#play-again-button {
+  display: flex;
+  width: 100%;
+  /* Makes the button full width */
+  height: 49px;
+  padding: 0 15px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #3f3f3f;
+  border-radius: 4px;
+  background-color: rgb(34, 34, 34);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+#play-again-button:hover {
+  background-color: rgb(18, 18, 18);
+}
+
+#guess-indicator {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 1px solid darkgray;
+}
+
+#collection-group {
+  display: flex;
+  align-items: center;
+  background-color: #D3D3D3;
+  padding: 5px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#collection-group:hover {
+  background-color: #C0C0C0;
+  transition: background-color 0.3s ease;
+}
+
+.collection-icon {
+  margin-right: 5px;
+}
+
+#card-car-image {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+
+  /* #profile-icon {
+    display: none;
+  } */
+  #popup-card {
+    top: 10%;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  #category-form {
+    overflow-y: auto;
+    max-height: 60vh;
+  }
+}
