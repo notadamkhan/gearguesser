@@ -13,6 +13,7 @@ GearGuesser is a Wordle-inspired game where you guess the make and model of a ca
 - JavaScript
 - jQuery
 - Docker
+- PostgreSQL
 
 ## How to Play
 
